@@ -13,8 +13,18 @@ return new class extends Migration
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
+
+            $table->uuid('uuid')->unique();
+
+            $table->enum('status', ['active', 'pending', 'cancelled']);
+
+            $table->date('ends_at')->nullable();
+
             $table->timestamps();
+
+            $table->softDeletes('deleted_at', precision: 0);
         });
+
     }
 
     /**
