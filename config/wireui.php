@@ -77,7 +77,7 @@ return [
         ],
         'input' => [
             'class' => Components\Input::class,
-            'alias' => 'input',
+            'alias' => 'form.input',
         ],
         'textarea' => [
             'class' => Components\Textarea::class,
@@ -85,7 +85,7 @@ return [
         ],
         'label' => [
             'class' => Components\Label::class,
-            'alias' => 'label',
+            'alias' => 'form.label',
         ],
         'error' => [
             'class' => Components\Error::class,
@@ -125,7 +125,7 @@ return [
         ],
         'button' => [
             'class' => Components\Button::class,
-            'alias' => 'button',
+            'alias' => 'form.button',
         ],
         'button.circle' => [
             'class' => Components\CircleButton::class,

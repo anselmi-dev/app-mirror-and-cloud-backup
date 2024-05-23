@@ -60,8 +60,8 @@
                                                 {{ optional($license->created_at)->format('Y-m-d') }}
                                             </td>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 | w-0">
-                                                <x-button primary href="{{ route('licenses.show', ['license' => $license]) }}" icon="search"/>
-                                                <x-button dark href="{{ route('licenses.edit', ['license' => $license]) }}" icon="pencil"/>
+                                                <x-form.button primary href="{{ route('licenses.show', ['license' => $license]) }}" icon="search"/>
+                                                {{-- <x-form.button dark href="{{ route('licenses.edit', ['license' => $license]) }}" icon="pencil"/> --}}
                                             </td>
                                         </tr>
                                     @empty
