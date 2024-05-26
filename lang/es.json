@@ -369,5 +369,7 @@
     "status:active": "Activo",
     "status:cancelled": "Cancelado",
     "status:pending": "Pendiente",
-    "status:wait": "Esperando"
+    "status:wait": "Esperando",
+    "Yes, delete": "Sí, eliminar",
+    "Are you Sure?": "Desea continuar?"
 }

@@ -1,5 +1,5 @@
 <div class="py-5">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-2">
 
         <div class="flex items-center w-full">
             <div class="sm:flex-auto flex-1">
@@ -67,6 +67,7 @@
                                                 {{ optional($license->created_at)->format('Y-m-d') }}
                                             </td>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 | w-0">
+                                                <x-form.button negative wire:click="preventDelete({{ $license->id }})" icon="trash"/>
                                                 <x-form.button primary href="{{ route('licenses.show', ['license' => $license]) }}" icon="search"/>
                                                 <x-form.button dark href="{{ route('licenses.edit', ['license' => $license]) }}" icon="pencil"/>
                                             </td>

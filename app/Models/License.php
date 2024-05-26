@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class License extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
 
     /**
      * The attributes that are mass assignable.

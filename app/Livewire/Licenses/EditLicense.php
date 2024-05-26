@@ -4,9 +4,12 @@ namespace App\Livewire\Licenses;
 
 use Livewire\Component;
 use App\Models\License;
+use WireUi\Traits\Actions;
 
 class EditLicense extends Component
 {
+    use Actions;
+
     public License $license;
 
     protected $rules = [
