@@ -5,7 +5,7 @@ namespace App\Livewire\Licenses;
 use Livewire\Component;
 use App\Models\License;
 
-class Show extends Component
+class ShowLicense extends Component
 {
     public License $license;
 

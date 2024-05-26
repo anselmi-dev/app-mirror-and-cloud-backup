@@ -8,10 +8,10 @@
                 </h1>
             </div>
             <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <x-button primary wire:click="generate" icon="plus">
-                {{-- <x-button primary href="{{ route('licenses.create') }}"> --}}
+                {{-- <x-button primary wire:click="generate" icon="plus"> --}}
+                <x-form.button primary href="{{ route('licenses.create') }}">
                     Nueva
-                </x-button>
+                </x-form.button>
             </div>
         </div>
 
@@ -28,15 +28,19 @@
                                             ID</th>
                                         <th scope="col"
                                             class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            Licencia
+                                            {{ __('License') }}
                                         </th>
                                         <th scope="col"
                                             class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            Estado
+                                            {{ __('Status') }}
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
-                                            Creado el
+                                            {{ __('Ends At') }}
+                                        </th>
+                                        <th scope="col"
+                                            class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
+                                            {{ __('Created') }}
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0  | w-0">
@@ -57,11 +61,14 @@
                                                 {{ __('status:'.$license->status) }}
                                             </td>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
+                                                {{ optional($license->ends_at)->format('Y-m-d') }}
+                                            </td>
+                                            <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
                                                 {{ optional($license->created_at)->format('Y-m-d') }}
                                             </td>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 | w-0">
                                                 <x-form.button primary href="{{ route('licenses.show', ['license' => $license]) }}" icon="search"/>
-                                                {{-- <x-form.button dark href="{{ route('licenses.edit', ['license' => $license]) }}" icon="pencil"/> --}}
+                                                <x-form.button dark href="{{ route('licenses.edit', ['license' => $license]) }}" icon="pencil"/>
                                             </td>
                                         </tr>
                                     @empty

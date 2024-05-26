@@ -270,5 +270,6 @@ return [
         'username'                 => 'usuario',
         'value'                    => 'valor',
         'year'                     => 'año',
+        'ends_at'                  => 'fecha final',
     ],
 ];

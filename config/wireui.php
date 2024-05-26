@@ -133,7 +133,7 @@ return [
         ],
         'dropdown' => [
             'class' => Components\Dropdown::class,
-            'alias' => 'dropdown',
+            'alias' => 'button.dropdown',
         ],
         'dropdown.item' => [
             'class' => Components\Dropdown\DropdownItem::class,

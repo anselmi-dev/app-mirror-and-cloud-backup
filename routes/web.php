@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\LicenseController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Licenses\{
-    Index, Edit, Show, Create,
+    Index, EditLicense, ShowLicense, CreateLicense,
 };
 
 Route::middleware([
@@ -25,9 +25,18 @@ Route::middleware([
 
     Route::name('licenses.')->prefix('licenses')->group(function () {
         Route::get('/', Index::class)->name('index');
-        Route::get('create', Create::class)->name('create');
-        Route::get('{license}', Show::class)->name('show');
-        Route::get('{license}/edit', Edit::class)->name('edit');
+        Route::get('create', CreateLicense::class)->name('create');
+        Route::get('{license}', ShowLicense::class)->name('show');
+        Route::get('{license}/edit', EditLicense::class)->name('edit');
+    });
+
+    Route::get('test-event2', function () {
+
+        \App\Events\NotificationTest::dispatch('hello world');
+
+        event(new \App\Events\NotificationTest('hello world'));
+
+        return true;
     });
 });
 

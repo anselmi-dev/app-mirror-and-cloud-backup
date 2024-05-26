@@ -6,9 +6,9 @@
             </h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <x-button primary href="{{ route('licenses.index') }}">
-                Volver
-            </x-button>
+            <x-form.button icon="arrow-left" primary href="{{ route('licenses.index') }}">
+                {{ __('Back') }}
+            </x-form.button>
         </div>
     </div>
 </x-slot>

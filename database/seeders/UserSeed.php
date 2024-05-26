@@ -28,5 +28,7 @@ class UserSeed extends Seeder
         ]);
 
         $user->assignRole('admin');
+
+        $user->license()->create([]);
     }
 }

@@ -36,6 +36,7 @@ class License extends Model
     protected $with = [
     ];
 
+
     /**
      * Get the attributes that should be cast.
      *

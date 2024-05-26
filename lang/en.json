@@ -364,6 +364,7 @@
     "You may not leave a team that you created.": "You may not leave a team that you created.",
     "Your email address is unverified.": "Your email address is unverified.",
     "status:active": "Active",
-    "status:caceled": "Cancelled",
-    "status:wait": "Pending"
+    "status:cancelled": "Cancelled",
+    "status:pending": "Pending",
+    "status:wait": "Wait"
 }

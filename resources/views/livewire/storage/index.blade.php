@@ -21,7 +21,7 @@
     </ul>
 
     <ul role="list" class="divide-y divide-gray-100">
-        @foreach ($directories as $item)
+        @forelse ($directories as $item)
             <li class="flex items-center justify-between gap-x-6 py-1">
                 <div class="min-w-0">
                     <div class="flex items-start gap-x-3">
@@ -44,7 +44,11 @@
                     </div>
                 </div>
             </li>
-        @endforeach
+        @empty
+            <li class="flex items-center justify-between gap-x-6 py-1">
+                El usuario no ha seleccionado ningún directorio para respaldar aún.
+            </li>
+        @endforelse
 
         @foreach ($files as $item)
             <li class="flex items-center justify-between gap-x-6 py-1">
