@@ -24,6 +24,7 @@ class Directory extends Model
         'from',
         'to',
         'active',
+        'schedule',
         'license_id'
     ];
 

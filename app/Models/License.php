@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class License extends Model
 {
@@ -91,5 +92,18 @@ class License extends Model
     public function directories (): hasMany
     {
         return $this->hasMany(Directory::class, 'license_id');
+    }
+
+    /**
+     *
+     * @return bool
+     */
+    public function getIsActiveAttribute(): bool
+    {
+        try {
+            return $this->status == 'active' && $this->ends_at->gt(Carbon::now());
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }

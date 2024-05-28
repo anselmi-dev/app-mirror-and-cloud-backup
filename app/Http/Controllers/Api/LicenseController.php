@@ -85,4 +85,15 @@ class LicenseController extends Controller
 
         return new LicenseResource($license);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function validation (License $license)
+    {
+        return response()->json([
+            'active' => $license->is_active,
+            'message' => $license->is_active ? 'Licencia activa' : 'La licencia no se encuentra activa'
+        ]);
+    }
 }

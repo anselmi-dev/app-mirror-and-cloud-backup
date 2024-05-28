@@ -26,5 +26,6 @@ Route::middleware([
     config('jetstream.auth_session')
 ])->group(function () {
     Route::resource('license', LicenseController::class);
+    Route::get('license/{license}/validation', [LicenseController::class, 'validation']);
     Route::resource('directories', DirectoryController::class);
 });
