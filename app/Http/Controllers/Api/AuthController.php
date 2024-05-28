@@ -79,7 +79,7 @@ class AuthController extends Controller
             'email' => 'required|string|unique:users',
             'password' => 'required|string',
             'license' => 'required|string',
-            'password_confirmation' => 'required|same:password'
+            // 'password_confirmation' => 'required|same:password'
         ]);
 
         $license = License::find($request->license);
