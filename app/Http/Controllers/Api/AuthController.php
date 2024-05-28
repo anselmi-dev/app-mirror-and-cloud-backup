@@ -95,6 +95,7 @@ class AuthController extends Controller
 
         if ($user->save()) {
             $tokenResult = $user->createToken('Personal Access Token');
+
             $token = $tokenResult->plainTextToken;
 
             $user->assignRole('client');
@@ -102,7 +103,7 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Successfully created user!',
                 'accessToken' => $token,
-                'user' => User::with('user_license', 'user_license.license', 'user_license.directories')->find($request->user()->id)
+                'user' => User::with('user_license', 'user_license.license', 'user_license.directories')->find($user->id)
             ], 201);
         } else {
             return response()->json(['message' => 'Provide proper details']);
