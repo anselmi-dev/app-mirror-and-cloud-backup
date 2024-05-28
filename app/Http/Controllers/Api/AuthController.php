@@ -82,7 +82,7 @@ class AuthController extends Controller
             // 'password_confirmation' => 'required|same:password'
         ]);
 
-        $license = License::find($request->license);
+        $license = License::whereDoesntHave('users')->where('uuid', trim($request->license))->first();
 
         if (!$license)
             return response()->json(['message' => 'La Licencia es incorrecta'], 500);
