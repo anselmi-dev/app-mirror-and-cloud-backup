@@ -19,16 +19,29 @@ class Index extends Component
 
     public array|null $files = [];
 
+    protected $storage;
+
     public function mount()
     {
-        $this->current = $this->license->uuid;
+        $this->current = '/';
     }
 
     public function render()
     {
-        $this->directories = Storage::disk('public')->directories($this->current);
+        // Obtener la configuración actual del disco 's3'
+        $s3Config = config('filesystems.disks.s3');
 
-        $this->files = Storage::disk('public')->files($this->current);
+        // Modificar el nombre del bucket
+        $s3Config['bucket'] = $this->license->uuid;
+
+        // Reconfigurar el disco 's3' con el nuevo bucket
+        config(['filesystems.disks.s3' => $s3Config]);
+
+        $this->storage = Storage::disk('s3');
+
+        $this->directories = $this->storage->directories($this->current);
+
+        $this->files = $this->storage->files($this->current);
 
         return view('livewire.storage.index');
     }

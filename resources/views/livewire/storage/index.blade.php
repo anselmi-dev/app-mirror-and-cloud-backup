@@ -45,9 +45,9 @@
                 </div>
             </li>
         @empty
-            <li class="flex items-center justify-between gap-x-6 py-1">
+            {{-- <li class="flex items-center justify-between gap-x-6 py-1">
                 El usuario no ha seleccionado ningún directorio para respaldar aún.
-            </li>
+            </li> --}}
         @endforelse
 
         @foreach ($files as $item)
