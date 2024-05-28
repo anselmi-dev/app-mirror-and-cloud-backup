@@ -36,20 +36,24 @@ class DirectoryController extends Controller
      */
     public function store(StoreDirectoryRequest $request)
     {
-        $response = Gate::inspect('create', Directory::class);
+        try {
+            $response = Gate::inspect('create', Directory::class);
 
-        if (!$response->allowed()) {
-            return response()->json(['error' => __('This action is unauthorized')], 403);
+            if (!$response->allowed()) {
+                return response()->json(['error' => __('This action is unauthorized')], 403);
+            }
+
+            $user_license = $request->user()->user_license;
+
+            if (!$user_license)
+                return response()->json(['error' => __('No posee licencia')], 403);
+
+            $directory = $user_license->directories()->create($request->all());
+
+            return DirectoryResource::collection($user_license->directories()->paginate(25));
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 500);
         }
-
-        $user_license = $request->user()->user_license;
-
-        if (!$user_license)
-            return response()->json(['error' => __('No posee licencia')], 403);
-
-        $directory = $user_license->directories()->create($request->all());
-
-        return DirectoryResource::collection($user_license->directories()->paginate(25));
     }
 
     /**
@@ -71,20 +75,24 @@ class DirectoryController extends Controller
      */
     public function update(UpdateDirectoryRequest $request, Directory $directory)
     {
-        $response = Gate::inspect('update', $directory);
+        try {
+            $response = Gate::inspect('update', $directory);
 
-        if (!$response->allowed()) {
-            return response()->json(['error' => __('This action is unauthorized')], 403);
+            if (!$response->allowed()) {
+                return response()->json(['error' => __('This action is unauthorized')], 403);
+            }
+
+            $user_license = $request->user()->user_license;
+
+            if (!$user_license)
+                return response()->json(['error' => __('No posee licencia')], 403);
+
+            $directory->update($request->all());
+
+            return DirectoryResource::collection($user_license->directories()->paginate(25));
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 500);
         }
-
-        $user_license = $request->user()->user_license;
-
-        if (!$user_license)
-            return response()->json(['error' => __('No posee licencia')], 403);
-
-        $directory->update($request->all());
-
-        return DirectoryResource::collection($user_license->directories()->paginate(25));
     }
 
     /**
@@ -92,19 +100,23 @@ class DirectoryController extends Controller
      */
     public function destroy(Request  $request, Directory $directory)
     {
-        $response = Gate::inspect('update', $directory);
+        try {
+            $response = Gate::inspect('update', $directory);
 
-        if (!$response->allowed()) {
-            return response()->json(['error' => __('This action is unauthorized')], 403);
+            if (!$response->allowed()) {
+                return response()->json(['error' => __('This action is unauthorized')], 403);
+            }
+
+            $user_license = $request->user()->user_license;
+
+            if (!$user_license)
+                return response()->json(['error' => __('No posee licencia')], 403);
+
+            $directory->delete();
+
+            return DirectoryResource::collection($user_license->directories()->paginate(25));
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 500);
         }
-
-        $user_license = $request->user()->user_license;
-
-        if (!$user_license)
-            return response()->json(['error' => __('No posee licencia')], 403);
-
-        $directory->delete();
-
-        return DirectoryResource::collection($user_license->directories()->paginate(25));
     }
 }

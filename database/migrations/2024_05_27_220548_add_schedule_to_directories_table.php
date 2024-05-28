@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('directories', function (Blueprint $table) {
-            $table->string('schedule')->after('active')->nullable();
+            $table->json('schedule')->after('active');
         });
     }
 

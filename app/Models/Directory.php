@@ -29,6 +29,18 @@ class Directory extends Model
     ];
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'schedule' => 'array'
+        ];
+    }
+
+    /**
      * Get LIcense to Directory
      *
      * @return BelongsTo
